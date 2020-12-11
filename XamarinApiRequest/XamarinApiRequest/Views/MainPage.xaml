@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinApiRequest.MainPage">
+             x:Class="XamarinApiRequest.MainPage"
+             BackgroundColor="CadetBlue">
 
     <StackLayout>
-        <Button Text="GetRandomGame" HorizontalOptions="Center" VerticalOptions="Start" Command="{Binding GetRandomGameCommand}" />
-        <Label Text="{Binding CurrentGame}"/>
+        <Button Text="Get Random Action Game" HorizontalOptions="Center" Command="{Binding GetRandomGameCommand}" />
+        <Label Text="{Binding CurrentGame}" HorizontalOptions="Center" TextColor="OrangeRed" FontSize="Medium"/>
     </StackLayout>
 </ContentPage>

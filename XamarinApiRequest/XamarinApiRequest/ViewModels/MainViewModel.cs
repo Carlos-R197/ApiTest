@@ -10,12 +10,23 @@ using Xamarin.Essentials;
 
 namespace XamarinApiRequest.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : BaseViewModel
     {
-        public ICommand GetRandomGameCommand => new Command(GetRandomGame);
-        public string CurrentGame { get; set; }
+        private string currentGame;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand GetRandomGameCommand => new Command(GetRandomGame);
+        public string CurrentGame 
+        { 
+            get
+            {
+                return currentGame;
+            }
+            set
+            {
+                currentGame = value;
+                OnPropertyChanged("CurrentGame");
+            }
+        }
 
         async void GetRandomGame()
         {
@@ -26,7 +37,7 @@ namespace XamarinApiRequest.ViewModels
                 if (game != null)
                 {
                     CurrentGame = $"Game: {game.name}";
-                    
+                 
                 }
             }
             else
