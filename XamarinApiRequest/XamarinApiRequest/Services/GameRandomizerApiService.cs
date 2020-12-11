@@ -19,8 +19,9 @@ namespace XamarinApiRequest.Services
             if (response.IsSuccessStatusCode)
             {
                 var example = JsonConvert.DeserializeObject<Example>(await response.Content.ReadAsStringAsync());
-                //get first game of first result
-                game = example.results[0].games[0];
+                var rnd = new Random();
+                int index = rnd.Next(0, example.results[0].games.Count);
+                game = example.results[0].games[index];
             }
 
             return game;

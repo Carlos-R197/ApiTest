@@ -13,6 +13,7 @@ namespace XamarinApiRequest.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         public ICommand GetRandomGameCommand => new Command(GetRandomGame);
+        public string CurrentGame { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -24,7 +25,8 @@ namespace XamarinApiRequest.ViewModels
                 Game game = await service.GetRandomAsync();
                 if (game != null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Succes", game.name, "OK");
+                    CurrentGame = $"Game: {game.name}";
+                    
                 }
             }
             else
